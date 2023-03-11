@@ -5,6 +5,8 @@
   --f-ko: "Noto Sans KR", sans-serif;
   --f-en: "Work Sans", sans-serif;
   --f-go: "Anton", sans-serif;
+  --fs-content-title: 24px;
+  --fs-content-content: 34px;
 }
 
 html {
@@ -12,7 +14,6 @@ html {
 }
 
 body {
-  min-height: 200vh;
 }
 
 body * {
@@ -24,20 +25,30 @@ body a {
   text-decoration: none;
 }
 
+button {
+  border: none;
+  background-color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
 header {
   font-family: var(--f-go);
   position: fixed;
   width: 100%;
-  background-color: white;
-  box-shadow: 0 1px 10px rgb(187, 187, 187);
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px) brightness(120%);
+  box-shadow: 0 0px 10px rgba(187, 187, 187, 0.6);
 
   font-size: 4.5rem;
+  z-index: 10;
 }
 
 .header-nav {
   display: flex;
   justify-content: space-between;
-  padding: 30px 7%;
+  padding: 20px 7%;
 }
 
 .header-nav__li1 {
@@ -62,7 +73,176 @@ header {
 }
 
 main {
-  height: 500px;
+  padding: 5vh 5vw;
+  font-family: var(--f-en);
+}
+
+.main-blank {
+  height: 120px;
+}
+
+.main-headline1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-bottom: 150px;
+  border-bottom: 1px solid rgb(57, 57, 57);
+}
+
+.main-headline__title {
+  font-size: 3rem;
+  font-weight: 600;
+  margin: 40px 0 100px;
+  display: flex;
+}
+
+.main-headline__arrow-btn {
+  position: absolute;
+  right: 0;
+}
+
+.main-headline__img {
+  width: clamp(30%, 80%, 730px);
+}
+
+.main-headline__img img {
+  width: 100%;
+}
+
+.main-headline__content {
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  line-height: 44px;
+}
+
+.main-headline__content-arrow {
+  background-color: black;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.6rem;
+  padding: 3px 5px;
+  line-height: 20px;
+}
+
+.main-headline__content-link {
+  font-size: 2rem;
+
+  font-weight: 500;
+}
+.main-headline__content-arrow-span {
+  margin-left: 10px;
+  line-height: 20px;
+  transition: all 0.25s ease-in-out;
+}
+
+.main-headline__content-arrow-span:hover {
+  margin-left: 20px;
+  transition: all 0.25s ease-in-out;
+}
+
+.main-content {
+  border-bottom: 1px solid rgb(57, 57, 57);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.main-content:last-child {
+  border-bottom: none;
+}
+
+.main-content__content {
+}
+
+.main-content--typeA .main-content__content {
+  order: 0;
+}
+
+.main-content--typeA .main-content__img-box {
+  order: 1;
+}
+
+.main-content--typeB .main-content__content {
+  order: 1;
+}
+
+.main-content--typeB .main-content__img-box {
+  order: 0;
+  /* transform: perspective(1000px); */
+}
+
+.main-content__img-box {
+  position: relative;
+  margin-top: clamp(80px, 5%, 100px);
+}
+.main-content__img-box-card {
+  transform-style: preserve-3d;
+  transition: all 0.5s ease-in-out;
+  transform: perspective(1000px);
+}
+
+.main-content__img-box img {
+  width: 100%;
+  backface-visibility: hidden;
+}
+
+.main-content__img-box a {
+  backface-visibility: hidden;
+}
+
+.main-content__img-card-back {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  box-shadow: inset 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  transform: rotateX(180deg);
+  backface-visibility: hidden;
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: 5px;
+  text-shadow: 0 0 3px black;
+}
+
+.main-content__img-card-back p {
+  line-height: 50px;
+  color: white;
+}
+
+.main-content__img-box:hover .main-content__img-box-card {
+  width: 100%;
+  transform: rotateX(180deg);
+}
+
+.main-content__content-title {
+  font-size: var(--fs-content-title);
+  margin: 30px 0 50px;
+}
+.main-content__content-writing {
+  font-size: var(--fs-content-content);
+  margin-bottom: 50px;
+}
+
+.main-content__content-button {
+  box-sizing: border-box;
+  font-size: 16px;
+
+  border: 1px solid rgb(201, 201, 201);
+  border-radius: 30px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.main-content__content-button:hover {
+  background-color: black;
+  color: white;
 }
 
 footer {
