@@ -6,6 +6,7 @@ const apps = document.querySelector(".apps");
 
 const mainMenu = document.querySelector("div.menu");
 const mainMenuXButton = mainMenu.querySelector(".menu__bar-x");
+const headerMenu = document.querySelector("header");
 
 console.dir(mainMenuXButton);
 
@@ -22,6 +23,15 @@ function appsPositionFix() {
   }
 }
 
+function headerMenuColor() {
+  color = headerMenu.style.backgroundColor;
+  if (color === "") {
+    headerMenu.style.backgroundColor = "rgba(255, 255, 255, 1)";
+  } else {
+    headerMenu.style.backgroundColor = "";
+  }
+}
+
 function headerMenuBtnhandle() {
   appsPositionFix();
   console.dir("start");
@@ -34,9 +44,11 @@ function headerMenuBtnhandle() {
   console.dir(open);
   if (open === true) {
     mainMenu.style.left = "0";
+    headerMenuColor();
   } else {
     mainMenu.style.left = "";
     mainMenu.classList.toggle("menu-close");
+    headerMenuColor();
   }
   console.log("finish");
 }
